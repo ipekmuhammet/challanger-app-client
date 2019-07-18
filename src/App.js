@@ -4,10 +4,14 @@ import {
   Platform
 } from 'react-native'
 
-import Login from './pages/login/Login.tsx'
-import LoginWithUsername from './pages/loginWithUsername/Login.tsx'
+import Welcome from './pages/welcome/Welcome.tsx'
+import LoginWithUsername from './pages/login/Login.tsx'
+import Main from './pages/Main/Main.tsx'
 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import Login from './pages/login/Login';
+
+console.disableYellowBox = true;//dont shows warnings
 
 let CollapseExpand = (index, position) => {
   const inputRange = [index - 1, index, index + 1];
@@ -59,14 +63,14 @@ const TransitionConfiguration = () => {
   }
 }
 
-
-
 const navigator = createStackNavigator({
   SlideFromRight: { screen: LoginWithUsername },
-  Base: { screen: Login },
+  Login: { screen: Login },
+  Welcome: { screen: Welcome },
+  Main: { screen: Main }
 },
   {
-    initialRouteName: 'Base',
+    initialRouteName: 'Welcome',
     headerMode: "none",
     mode: Platform.OS === "ios" ? "modal" : "card",
     navigationOptions: {

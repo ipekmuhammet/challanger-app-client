@@ -28,19 +28,11 @@ export default styles = StyleSheet.create({
         flexDirection: 'row'
     },
     button: {
-        padding: 10,
-        flex: 1,
-        borderRadius: 12,
-        backgroundColor: 'rgba(00,00,255,0.18)',
-        flexDirection: 'row'
-    },
-    title: {
         padding: 5,
         margin: 5,
-        textAlign: 'center',
-        fontSize: 30,
-        color: 'white',
-        fontFamily: 'sans-serif'
+        flex: 1,
+        borderRadius: 12,
+        backgroundColor: 'rgba(00,00,255,0.18)'
     },
     text: {
         padding: 5,
@@ -62,7 +54,7 @@ export default styles = StyleSheet.create({
         fontFamily: 'sans-serif'
     },
     icon: {
-        width: 45,
-        height: 45
+        width: 80,
+        height: 80
     }
 });

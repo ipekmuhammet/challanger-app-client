@@ -11,8 +11,7 @@ export default styles = StyleSheet.create({
         alignSelf: 'stretch',
         margin: 10,
         justifyContent: 'center',
-        alignItems: 'center',
-        padding: 5
+        alignItems: 'center'
     },
     socialMediaContainer: {
         alignSelf: 'stretch',
