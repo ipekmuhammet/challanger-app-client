@@ -4,12 +4,12 @@ import {
   Platform
 } from 'react-native'
 
-import Welcome from './pages/welcome/Welcome.tsx'
-import LoginWithUsername from './pages/login/Login.tsx'
-import Main from './pages/Main/Main.tsx'
+import Welcome from './pages/Welcome/Welcome.tsx'
+import LoginWithUsername from './pages/Login/Login.tsx'
+import Main from './pages/Main/Main.js'
 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import Login from './pages/login/Login';
+import Login from './pages/Login/Login';
 
 console.disableYellowBox = true;//dont shows warnings
 

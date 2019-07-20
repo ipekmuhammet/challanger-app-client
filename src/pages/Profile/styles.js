@@ -2,58 +2,145 @@
 import { StyleSheet } from 'react-native';
 
 export default styles = StyleSheet.create({
-    backgroundContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        flexDirection: 'column'
-    },
     container: {
-        alignSelf: 'stretch',
-        margin: 10,
-        justifyContent: 'center',
-        alignItems: 'center'
+        flex: 1
     },
-    socialMediaContainer: {
-        alignSelf: 'stretch',
-        margin: 10,
+    profile: {
+        width: '100%',
+        height: 370,
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    description: {
+        width: '100%',
+        height: 220,
+        alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row'
-    },
-    row: {
-        padding: 5,
         textAlign: 'center',
-        alignSelf: 'stretch',
-        flexDirection: 'row'
     },
-    button: {
-        padding: 5,
-        margin: 5,
-        flex: 1,
-        borderRadius: 12,
-        backgroundColor: 'rgba(00,00,255,0.18)'
+    descriptionText: {
+        color: 'white',
+        justifyContent: 'center'
     },
-    text: {
-        padding: 5,
-        margin: 5,
-        textAlign: 'center',
+    username: {
         fontSize: 20,
         color: 'white',
-        fontFamily: 'sans-serif'
+        alignSelf: 'center',
+        marginTop:8
     },
-    input: {
-        padding: 10,
-        margin: 5,
-        fontSize: 20,
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        borderRadius: 25,
-        paddingLeft: 20,
-        flex: 1,
+    userId: {
         color: 'white',
-        fontFamily: 'sans-serif'
+        fontSize: 16,
+        alignSelf: 'center',
+        paddingBottom: 5,
+        marginBottom: 5,
+        borderColor: '#f7f7f7',
+        borderBottomWidth: 1,
     },
-    icon: {
+    followers: {
+        alignSelf: 'flex-start',
+        position: 'absolute',
+        top: 5,
+        padding: 5,
+        margin: 5
+    },
+    followerText: {
+        color: 'white',
+        fontSize: 15,
+        margin: 4
+    },
+    interact: {
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        padding: 5,
+        top: 5,
+        margin: 5
+    },
+    description: {
+        alignSelf: 'center',
+        position: 'absolute',
+        padding: 5,
+        margin: 5
+    },
+    name: {
+        fontSize: 22,
+        color: 'white'
+    },
+    backgroundPhoto: {
+        height: 150,
+        width: '100%',
+        resizeMode: 'cover',
+        borderBottomLeftRadius: 4,
+        borderBottomRightRadius: 4
+    },
+    information: {
+        height: 220,
+        textAlign: 'center',
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+    },
+    scene: {
+        flex: 1
+    },
+    avatar: {
+        width: 120,
+        height: 120,
+        borderRadius: 60,
+        margin: 5,
+        marginBottom: 15,
+        borderWidth: 4,
+        borderColor: 'white',
+        alignSelf: 'center',
+        position: 'absolute'
+    },
+    ///////////////////
+    channel: {
+        flexDirection: 'row',
+        padding: 5,
+        margin: 5,
+        borderColor: '#CCCCCC',
+        borderBottomWidth: 1,
+    },
+    shareItem:{
+        flexDirection: 'column',
+        padding: 5,
+        margin: 5,
+        borderColor: '#CCCCCC',
+        borderBottomWidth: 1,
+    },
+    shareDescription:{
+        flexDirection: 'row',
+        padding: 5,
+        margin: 5
+    },
+    channelLogo: {
         width: 80,
-        height: 80
+        height: 80,
+        margin: 5,
+        padding: 5,
+        borderRadius: 50
+    },
+    channelName: {
+        fontSize: 18,
+        paddingHorizontal: 15,
+        color: 'rgba(69,90,100,.95)',
+        margin: 5,
+        padding: 5
+    },
+    message: {
+        fontSize: 16,
+        paddingHorizontal: 15,
+        color: '#EDEDED',
+        margin: 5,
+        padding: 5
+    },
+    //
+    button: {
+        padding: 8,
+        marginHorizontal: 8,
+        marginBottom: 4,
+        backgroundColor: '#61AFEF',
+        borderRadius: 12
     }
 });

@@ -3,8 +3,8 @@ import { Text, View, TextInput, TouchableOpacity, ImageBackground, Image } from 
 
 //import { Actions } from 'react-native-router-flux';
 
-import { initializeParse, logIn, logOut, signUp } from '../../helpers/parse'
-import styles from './styles'
+import { initializeParse, logIn, logOut, signUp } from '../../helpers/parse.js'
+import styles from './styles.js'
 
 import ILoginState from './ILoginState'
 

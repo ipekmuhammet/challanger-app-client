@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground } from 'react-native';
+import { ImageBackground, View } from 'react-native';
 import BottomNavigation, { FullTab } from 'react-native-material-bottom-navigation'
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
@@ -7,7 +7,6 @@ import styles from './styles';
 import Home from '../Home/Home';
 import Settings from '../Settings/Settings';
 import Inbox from '../Inbox/Inbox';
-import Subscriptions from '../Subscriptions/Subscriptions';
 
 import { background } from '../../../assets/images';
 
@@ -45,25 +44,19 @@ export default class Main extends React.Component {
         },
         {
             key: 2,
-            icon: 'md-filing',
-            label: 'Subscriptions',
+            icon: 'md-glasses',
+            label: 'Profile',
             pressColor: 'rgba(255, 255, 255, 0.16)'
         },
         {
             key: 3,
             icon: 'md-settings',
-            label: 'Profile',
-            pressColor: 'rgba(255, 255, 255, 0.16)'
-        },
-        {
-            key: 4,
-            icon: 'md-profile',
             label: 'Settings',
             pressColor: 'rgba(255, 255, 255, 0.16)'
         }
     ]
 
-    renderTab({ tab, isActive }: any) {
+    renderTab({ tab, isActive }) {
         return <FullTab
             isActive={isActive}
             key={tab.key}
@@ -75,17 +68,17 @@ export default class Main extends React.Component {
 
     getActiveTab() {
         switch (this.state.activeTab) {
-            case 0: return <Home/>
+            case 0: return <Home />
             case 1: return <Inbox />
-            case 2: return <Subscriptions />
-            case 3: return <Profile />
-            case 4: return <Settings />
+            case 2: return <Profile />
+            case 3: return <Settings />
         }
     }
 
     render() {
         return (
             <ImageBackground source={background} style={styles.backgroundContainer}>
+
                 {this.getActiveTab()}
                 <BottomNavigation
                     onTabPress={newTab => this.setState({ activeTab: newTab.key })}
