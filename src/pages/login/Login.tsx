@@ -33,6 +33,14 @@ export default class Login extends React.Component<prop, ILoginState> {
         this.props.navigation.navigate('Main', { transition: 'collapseExpand' });
     }
 
+    moveToRegister = () => {
+        this.props.navigation.navigate('Register');
+    }
+
+    onSignUpClick(){
+        this.moveToRegister()
+    }
+
     onLoginClick() {
         console.log(this.state.username, this.state.password)
         this.moveToMain()
@@ -78,7 +86,7 @@ export default class Login extends React.Component<prop, ILoginState> {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.row}>
-                        <TouchableOpacity style={styles.button} onPress={() => "1"}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.onSignUpClick()}>
                             <Text style={styles.text}>Sign Up</Text>
                         </TouchableOpacity>
                     </View>

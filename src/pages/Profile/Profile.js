@@ -14,37 +14,14 @@ import styles from './styles.js'
 
 import { TabView, SceneMap } from 'react-native-tab-view';
 import SubscriptionChannelItem from '../../components/SubscriptionChannelItem';
-
-const shareItem = (logo, name, message) => (
-    <TouchableOpacity style={styles.channel}>
-        <Image source={logo} style={styles.channelLogo} />
-        <View style={styles.channelDescription}>
-            <Text style={styles.channelName}>{name}</Text>
-            <Text style={styles.message}>{message}</Text>
-        </View>
-    </TouchableOpacity>
-);
-
-const shareVideoItem = (logo, name, message) => (
-    <TouchableOpacity style={styles.shareItem}>
-        <View style={styles.shareDescription}>
-            <Image source={logo} style={styles.channelLogo} />
-            <View style={styles.channelDescription}>
-                <Text style={styles.channelName}>{name}</Text>
-                <Text style={styles.message}>{message}</Text>
-            </View>
-        </View>
-        <View style={styles.channelDescription}>
-            <Image source={backgroundPhotoSrc} style={{ height: 200, borderRadius: 8, padding: 4, margin: 4, width: '98%' }} />
-        </View>
-    </TouchableOpacity>
-);
+import PostItem from '../../components/PostItem';
+import MediaItem from '../../components/MediaItem';
 
 const FirstRoute = () => (
     <View style={[styles.scene]} >
         {
             [1, 2, 3, 4, 5].map(el => {
-                return shareItem(profileSrc, "Muhammet İpek @SuckItDown", "Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!.")
+                return <PostItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/>
             })
         }
     </View>
@@ -54,7 +31,7 @@ const SecondRoute = () => (
     <View style={[styles.scene]}>
         {
             [1, 2, 3, 4, 5].map(el => {
-                return shareItem(randomGuySrc, "Random Guy @randomGuy", "What can i do sometimes.", "Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!.")
+                return <PostItem name={"Muhammet İpek @SuckItDown"} logo={randomGuySrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/>
             })
         }
     </View>
@@ -64,7 +41,7 @@ const ThirdRoute = () => (
     <View style={[styles.scene]} >
         {
             [1, 2, 3, 4, 5].map(el => {
-                return shareVideoItem(profileSrc, "Muhammet İpek @SuckItDown", "Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!.")
+                return <MediaItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} backgroundPhotoSrc={backgroundPhotoSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/>
             })
         }
     </View>
@@ -75,9 +52,9 @@ const ForthRoute = () => (
         {
             [1, 2, 3, 4, 5].map(el => {
                 return el % 2 == 0 ?
-                    shareVideoItem(profileSrc, "Muhammet İpek @SuckItDown", "Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!.") :
-                    shareItem(randomGuySrc, "Random Guy @randomGuy", "What can i do sometimes.", "Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!.")
-            })
+                 <MediaItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} backgroundPhotoSrc={backgroundPhotoSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/> :
+                    <PostItem name={"Muhammet İpek @SuckItDown"} logo={randomGuySrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/>
+                })
         }
     </View>
 );

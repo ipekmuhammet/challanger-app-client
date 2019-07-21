@@ -8,5 +8,18 @@ import topBarBg from './topBarBg.png'
 import profileSrc from './profile.png'
 import backgroundPhotoSrc from './backgroundPhoto.png'
 import randomGuySrc from './randomGuySrc.png'
+import postIcon from './postIcon.png'
 
-export { background, facebook, google, twitter, icon, splash, topBarBg, profileSrc, backgroundPhotoSrc, randomGuySrc }
+export {
+    background,
+    facebook,
+    google,
+    twitter,
+    icon,
+    splash,
+    topBarBg,
+    profileSrc,
+    backgroundPhotoSrc,
+    randomGuySrc,
+    postIcon
+}

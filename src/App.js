@@ -10,6 +10,7 @@ import Main from './pages/Main/Main.js'
 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 console.disableYellowBox = true;//dont shows warnings
 
@@ -66,6 +67,7 @@ const TransitionConfiguration = () => {
 const navigator = createStackNavigator({
   SlideFromRight: { screen: LoginWithUsername },
   Login: { screen: Login },
+  Register: { screen: Register },
   Welcome: { screen: Welcome },
   Main: { screen: Main }
 },

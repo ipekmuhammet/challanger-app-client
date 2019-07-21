@@ -1,29 +1,39 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 
-import { signUp } from '../../helpers/parse';
+import { signUp, logOut } from '../../helpers/parse';
 import { Actions } from 'react-native-router-flux';
 
 import styles from './styles'
+import { background as backgroundImage, icon } from '../../../assets/images.js'
 
-import backgroundImage from '../../../assets/background.png'
-import icon from '../../../assets/icon.png'
+interface prop {
+    navigation: any
+}
 
-export class Register extends React.Component {
+export class Register extends React.Component<prop> {
     static propTypes = {
 
     }
 
     state = {
-        username: '',
-        email: '',
-        password: ''
+        email: 'test@test.com',
+        username: 'Test',
+        password: 'Test123'
+    }
+
+    moveToMain = () => {
+        this.props.navigation.navigate('Main', { transition: 'collapseExpand' });
     }
 
     onSignUpClick() {
-        signUp(this.state.username, this.state.email, this.state.password).then((result) => {
+        logOut()//if logged already., check and logout
+
+        signUp(this.state.username, this.state.email, this.state.password).then((result: any) => {
             console.log("Success")
-        }).catch((resolve) => {
+            this.moveToMain()
+
+        }).catch((resolve: any) => {
             console.log(resolve)
         })
     }
@@ -57,7 +67,7 @@ export class Register extends React.Component {
                 </View>
                 <View style={styles.container}>
                     <View style={styles.row}>
-                        <TouchableOpacity style={styles.button} onPress={() => Actions.register()}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.onSignUpClick()}>
                             <Text style={styles.text}>Sign Up</Text>
                         </TouchableOpacity>
                     </View>
