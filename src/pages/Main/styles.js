@@ -55,5 +55,15 @@ export default styles = StyleSheet.create({
     icon: {
         width: 80,
         height: 80
-    }
+    },
+    avatar: {
+        width: 90,
+        height: 90,
+        borderRadius: 45,
+        margin: 5,
+        marginBottom: 15,
+        borderWidth: 4,
+        borderColor: 'white',
+        position: 'absolute'
+    },
 });

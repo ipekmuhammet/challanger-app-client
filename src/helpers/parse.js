@@ -28,12 +28,12 @@ export const initializeParse = (serverURL, applicationId, jsKey, masterKey) => {
     )
 }
 
-export const getQuests = () => {
-    const quest = Parse.Object.extend('quest');
-    const query = new Parse.Query(quest);
+export const getShares = () => {
+    const share = Parse.Object.extend('shares');
+    const query = new Parse.Query(share);
     //query.equalTo("sender", 'A string');
     //query.equalTo("quest", 'A string');
-    return query.find().then((quests) => {
-        return quests
+    return query.find().then((shares) => {
+        return shares
     });
 }

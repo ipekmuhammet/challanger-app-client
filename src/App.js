@@ -35,7 +35,7 @@ let CollapseExpand = (index, position) => {
 let SlideFromRight = (index, position, width) => {
   const inputRange = [index - 1, index, index + 1];
   const translateX = position.interpolate({
-    inputRange: [index - 1, index, index + 1],
+    inputRange,
     outputRange: [width, 0, 0]
   })
   const slideFromRight = { transform: [{ translateX }] }
@@ -72,7 +72,7 @@ const navigator = createStackNavigator({
   Main: { screen: Main }
 },
   {
-    initialRouteName: 'Welcome',
+    initialRouteName: 'Main',
     headerMode: "none",
     mode: Platform.OS === "ios" ? "modal" : "card",
     navigationOptions: {
