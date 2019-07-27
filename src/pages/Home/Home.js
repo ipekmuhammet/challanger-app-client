@@ -41,6 +41,10 @@ export class Home extends React.Component {
         })
     }
 
+    moveToRegister = () => {
+        this.props.navigation.navigate('NewPost', { navigation: this.props.navigation });
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -59,17 +63,17 @@ export class Home extends React.Component {
                 <FlatList
                     data={this.state.shares}
                     renderItem={object => <PostItem name={object.item.share.owner} logo={randomGuy} message={object.item.share.detail} />}
-                    keyExtractor={item => {"share"+item.share.ownerUserId}}
+                    keyExtractor={item => { "share" + item.share.ownerUserId }}
                 //ItemSeparatorComponent={() => <View style={{ height: 0.5, backgroundColor: '#E5E5E5' }} />}
                 />
 
                 <FloatingAction
                     floatingIcon={postIcon}
                     iconHeight={50}
-                    color={'rgb(220,40,40)'}
+                    color={'rgb(255,255,255)'}
                     iconWidth={50}
                     onPressMain={() => {
-                        console.log("asdsa")
+                        this.moveToRegister()
                     }}
                 />
             </View>

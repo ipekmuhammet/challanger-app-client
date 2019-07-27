@@ -7,6 +7,8 @@ import {
 import Welcome from './pages/Welcome/Welcome.tsx'
 import LoginWithUsername from './pages/Login/Login.tsx'
 import Main from './pages/Main/Main.js'
+import Home from './pages/Home/Home.js'
+import NewPost from './components/NewPost.js'
 
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Login from './pages/Login/Login';
@@ -67,9 +69,10 @@ const TransitionConfiguration = () => {
 const navigator = createStackNavigator({
   SlideFromRight: { screen: LoginWithUsername },
   Login: { screen: Login },
+  NewPost: { screen: NewPost },
   Register: { screen: Register },
   Welcome: { screen: Welcome },
-  Main: { screen: Main }
+  Main: { screen: Main },
 },
   {
     initialRouteName: 'Main',

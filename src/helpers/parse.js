@@ -37,3 +37,32 @@ export const getShares = () => {
         return shares
     });
 }
+
+export const getSpecificShares = (ownerId) => {
+    const share = Parse.Object.extend('shares');
+    const query = new Parse.Query(share);
+    query.equalTo("ownerUserId", ownerId);
+    //query.equalTo("quest", 'A string');
+    return query.find().then((shares) => {
+        return shares
+    });
+}
+
+export const saveShare = (owner, ownerId, detail) => {
+    const shares = Parse.Object.extend('shares');
+    const myNewObject = new shares();
+
+    myNewObject.set('owner', owner);
+    myNewObject.set('ownerUserId', ownerId);
+    myNewObject.set('detail', detail);
+
+    myNewObject.save().then(
+        (result) => {
+            console.log('shares created', result);
+            return result
+        }, (error) => {
+            console.error('Error while creating shares: ', error);
+            return error
+        }
+    );
+}

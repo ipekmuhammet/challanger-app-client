@@ -27,7 +27,7 @@ export default class Main extends React.Component {
     }
 
     state = {
-        activeTab: 0,
+        activeTab: 2,
         isTabOpen: false
     }
 
@@ -70,7 +70,7 @@ export default class Main extends React.Component {
 
     getActiveTab() {
         switch (this.state.activeTab) {
-            case 0: return <Home />
+            case 0: return <Home navigation={this.props.navigation} />
             case 1: return <Inbox />
             case 2: return <Profile />
             case 3: return <Settings />
@@ -85,7 +85,7 @@ export default class Main extends React.Component {
                 </View>
                 <View style={{ borderWidth: 1, height: 100, margin: 5, padding: 5 }}>
                     <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 20 }}>asdadas</Text>
-                    <Text style={{ color: '#EEFEFE', margin: 2, padding: 2, fontSize: 17 }}>@asdadas</Text>
+                    <Text style={{ color: '#EEFEFE', margin: 2, padding: 2, fontSize: 17 }}>@MuhammetIpek</Text>
                     <Text style={{ color: '#C2C2C2', margin: 2, padding: 2, fontSize: 17 }}><Text style={{ fontSize: 20, color: '#EFEFEF' }}>7</Text>  Takip Edilen · <Text style={{ fontSize: 20, color: '#EFEFEF' }}>0</Text>  Takipçi</Text>
                 </View>
                 <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginHorizontal: 12 }} />
@@ -95,7 +95,7 @@ export default class Main extends React.Component {
                             <Image style={{ width: 55, height: 55, borderRadius: 27 }} source={randomGuySrc} />
                         </View>
                         <View style={{ flex: 3 }}>
-                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 24, alignSelf: 'flex-end' }}>Profil</Text>
+                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 22, alignSelf: 'flex-end' }}>Profil</Text>
                         </View>
                     </View>
                     <View style={{ borderWidth: 1, height: 60, margin: 5 }}>
@@ -103,7 +103,7 @@ export default class Main extends React.Component {
                             <Image style={{ width: 55, height: 55, borderRadius: 27 }} source={randomGuySrc} />
                         </View>
                         <View style={{ flex: 3 }}>
-                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 24, alignSelf: 'flex-end' }}>Lists</Text>
+                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 22, alignSelf: 'flex-end' }}>Lists</Text>
                         </View>
                     </View>
                     <View style={{ borderWidth: 1, height: 60, margin: 5 }}>
@@ -111,7 +111,7 @@ export default class Main extends React.Component {
                             <Image style={{ width: 55, height: 55, borderRadius: 27 }} source={randomGuySrc} />
                         </View>
                         <View style={{ flex: 3, height: 60 }}>
-                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 24, alignSelf: 'flex-end' }}>Place marks</Text>
+                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 22, alignSelf: 'flex-end' }}>Place marks</Text>
                         </View>
                     </View>
                     <View style={{ borderWidth: 1, height: 60, margin: 5 }}>
@@ -119,7 +119,7 @@ export default class Main extends React.Component {
                             <Image style={{ width: 55, height: 55, borderRadius: 27 }} source={randomGuySrc} />
                         </View>
                         <View style={{ flex: 3 }}>
-                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 24, alignSelf: 'flex-end' }}>Moments</Text>
+                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 22, alignSelf: 'flex-end' }}>Moments</Text>
                         </View>
                     </View>
                 </View>
@@ -131,7 +131,7 @@ export default class Main extends React.Component {
                             <Image style={{ width: 55, height: 55, borderRadius: 27 }} source={randomGuySrc} />
                         </View>
                         <View style={{ flex: 3 }}>
-                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 24, alignSelf: 'flex-end' }}>Ayarlar ve Gizlilik</Text>
+                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 22, alignSelf: 'flex-end' }}>Ayarlar ve Gizlilik</Text>
                         </View>
                     </View>
                     <View style={{ borderWidth: 1, height: 60, margin: 5 }}>
@@ -139,7 +139,7 @@ export default class Main extends React.Component {
                             <Image style={{ width: 55, height: 55, borderRadius: 27 }} source={randomGuySrc} />
                         </View>
                         <View style={{ flex: 3 }}>
-                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 24, alignSelf: 'flex-end' }}>Yardım Merkezi</Text>
+                            <Text style={{ color: '#A5A5A5', margin: 2, padding: 2, fontSize: 22, alignSelf: 'flex-end' }}>Yardım Merkezi</Text>
                         </View>
                     </View>
                 </View>

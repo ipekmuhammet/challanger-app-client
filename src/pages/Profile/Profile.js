@@ -16,23 +16,19 @@ import { TabView, SceneMap } from 'react-native-tab-view';
 import SubscriptionChannelItem from '../../components/SubscriptionChannelItem';
 import PostItem from '../../components/PostItem';
 import MediaItem from '../../components/MediaItem';
+import { getSpecificShares } from '../../helpers/parse';
+import { Shares } from '../Shares/Shares';
 
-const FirstRoute = () => (
-    <View style={[styles.scene]} >
-        {
-            [1, 2, 3, 4, 5].map(el => {
-                return <PostItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/>
-            })
-        }
-    </View>
-);
+let aa = []
 
 const SecondRoute = () => (
     <View style={[styles.scene]}>
-        {
+        {    /*
+
             [1, 2, 3, 4, 5].map(el => {
-                return <PostItem name={"Muhammet İpek @SuckItDown"} logo={randomGuySrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/>
+                return <PostItem name={"Muhammet İpek @SuckItDown"} logo={randomGuySrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."} />
             })
+                */
         }
     </View>
 );
@@ -40,9 +36,11 @@ const SecondRoute = () => (
 const ThirdRoute = () => (
     <View style={[styles.scene]} >
         {
+            /*
             [1, 2, 3, 4, 5].map(el => {
-                return <MediaItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} backgroundPhotoSrc={backgroundPhotoSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/>
+                return <MediaItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} backgroundPhotoSrc={backgroundPhotoSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."} />
             })
+            */
         }
     </View>
 );
@@ -50,11 +48,13 @@ const ThirdRoute = () => (
 const ForthRoute = () => (
     <View style={[styles.scene]}>
         {
-            [1, 2, 3, 4, 5].map(el => {
-                return el % 2 == 0 ?
-                 <MediaItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} backgroundPhotoSrc={backgroundPhotoSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/> :
-                    <PostItem name={"Muhammet İpek @SuckItDown"} logo={randomGuySrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."}/>
-                })
+            /*
+[1, 2, 3, 4, 5].map(el => {
+    return el % 2 == 0 ?
+        <MediaItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} backgroundPhotoSrc={backgroundPhotoSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."} /> :
+        <PostItem name={"Muhammet İpek @SuckItDown"} logo={randomGuySrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."} />
+})
+*/
         }
     </View>
 );
@@ -63,6 +63,7 @@ export default class Profile extends Component {
 
     state = {
         index: 0,
+        shares: [],
         routes: [
             { key: 'first', title: 'Shares' },
             { key: 'second', title: 'Mention' },
@@ -102,7 +103,7 @@ export default class Profile extends Component {
                 <TabView
                     navigationState={this.state}
                     renderScene={SceneMap({
-                        first: FirstRoute,
+                        first: Shares,
                         second: SecondRoute,
                         third: ThirdRoute,
                         forth: ForthRoute,
