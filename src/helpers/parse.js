@@ -48,6 +48,36 @@ export const getSpecificShares = (ownerId) => {
     });
 }
 
+export const getMentionsOwners = (ownerId) => {
+    let shareIds = []
+    const mention = Parse.Object.extend('mention');
+    const query = new Parse.Query(mention);
+    query.equalTo("mentionedBy", ownerId);
+    //query.equalTo("quest", 'A string');
+    return query.find().then((mentions) => {
+        mentions.forEach(mention => {
+            shareIds.push(mention.attributes.shareId)
+        })
+        return shareIds
+    });
+}
+
+export const getSpecificSharesByOwnerIds = (ownerIds) => {
+    const share = Parse.Object.extend('shares');
+    let queries = []
+    ownerIds.forEach(ownerId => {
+        let query = new Parse.Query(share);
+        query.equalTo("objectId", ownerId);
+        queries.push(query)
+    })
+
+    let combinedQueries = Parse.Query.or(...queries)
+
+    return combinedQueries.find().then((shares) => {
+        return shares
+    });
+}
+
 export const saveShare = (owner, ownerId, detail) => {
     const shares = Parse.Object.extend('shares');
     const myNewObject = new shares();

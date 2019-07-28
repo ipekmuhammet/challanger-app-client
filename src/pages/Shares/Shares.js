@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, FlatList } from 'react-native';
 import PostItem from '../../components/PostItem'
 import { getSpecificShares } from '../../helpers/parse'
 import styles from './styles'
@@ -27,14 +27,10 @@ export class Shares extends React.Component {
     }
 
     render() {
-        return <View style={[styles.scene]} >
-            {
-                this.state.shares.map(el => {
-                    let {owner,ownerUserId,detail} = el.share
-                    return <PostItem name={owner+" "+ownerUserId} logo={profileSrc} message={detail} />
-                })
-            }
-        </View>
+        return <FlatList
+            data={this.state.shares}
+            renderItem={object => <PostItem name={object.item.share.owner} logo={randomGuy} message={object.item.share.detail} />}
+            keyExtractor={(item, index) => { "myShare" + index }} />
     }
 }
 

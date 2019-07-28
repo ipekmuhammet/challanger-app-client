@@ -18,6 +18,7 @@ import PostItem from '../../components/PostItem';
 import MediaItem from '../../components/MediaItem';
 import { getSpecificShares } from '../../helpers/parse';
 import { Shares } from '../Shares/Shares';
+import Mentions from '../Mentions/Mentions';
 
 let aa = []
 
@@ -48,7 +49,7 @@ const ThirdRoute = () => (
 const ForthRoute = () => (
     <View style={[styles.scene]}>
         {
-            /*
+    /*
 [1, 2, 3, 4, 5].map(el => {
     return el % 2 == 0 ?
         <MediaItem name={"Muhammet İpek @SuckItDown"} logo={profileSrc} backgroundPhotoSrc={backgroundPhotoSrc} message={"Suck it Down Babe!,Suck it Down Babe!,Suck it Down Babe!."} /> :
@@ -104,7 +105,7 @@ export default class Profile extends Component {
                     navigationState={this.state}
                     renderScene={SceneMap({
                         first: Shares,
-                        second: SecondRoute,
+                        second: Mentions,
                         third: ThirdRoute,
                         forth: ForthRoute,
                     })}
