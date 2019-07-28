@@ -35,7 +35,7 @@ export class Home extends React.Component {
         getShares().then(shares => {
             let arr = []
             for (let share in shares) {
-                arr.push({ share: shares[share].attributes })
+                arr.push({ share: { ...shares[share].attributes, ...{ id: shares[share].id } } })
             }
             this.setState({ shares: arr })
         })
@@ -62,16 +62,15 @@ export class Home extends React.Component {
                 </View>
                 <FlatList
                     data={this.state.shares}
-                    renderItem={object => <PostItem name={object.item.share.owner} logo={randomGuy} message={object.item.share.detail} />}
-                    keyExtractor={item => { "share" + item.share.ownerUserId }}
-                //ItemSeparatorComponent={() => <View style={{ height: 0.5, backgroundColor: '#E5E5E5' }} />}
+                    renderItem={object => <PostItem details={object.item.share} navigation={this.props.navigation} logo={randomGuy} />}
+                    keyExtractor={item => "share" + item.share.id}
                 />
 
                 <FloatingAction
                     floatingIcon={postIcon}
                     iconHeight={50}
-                    color={'rgb(255,255,255)'}
                     iconWidth={50}
+                    color={'#FFFFFF'}
                     onPressMain={() => {
                         this.moveToRegister()
                     }}

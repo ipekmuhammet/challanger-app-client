@@ -27,7 +27,7 @@ export default class Main extends React.Component {
     }
 
     state = {
-        activeTab: 2,
+        activeTab: 0,
         isTabOpen: false
     }
 
@@ -154,7 +154,6 @@ export default class Main extends React.Component {
                 isOpen={this.state.isTabOpen}
                 menu={this.renderLeftSidebar()}>
                 <ImageBackground source={background} style={styles.backgroundContainer}>
-
                     {this.getActiveTab()}
                     <BottomNavigation
                         onTabPress={newTab => this.setState({ activeTab: newTab.key })}

@@ -62,6 +62,24 @@ export const getMentionsOwners = (ownerId) => {
     });
 }
 
+export const saveMention = (shareId, mentionedBy) => {
+    const mention = Parse.Object.extend('mention');
+    const myNewObject = new mention();
+
+    myNewObject.set('shareId', shareId);
+    myNewObject.set('mentionedBy', mentionedBy);
+
+    return myNewObject.save().then(
+        (result) => {
+            console.log('shares created', result);
+            return true
+        }, (error) => {
+            console.error('Error while creating shares: ', error);
+            return false
+        }
+    );
+}
+
 export const getSpecificSharesByOwnerIds = (ownerIds) => {
     const share = Parse.Object.extend('shares');
     let queries = []
@@ -75,6 +93,26 @@ export const getSpecificSharesByOwnerIds = (ownerIds) => {
 
     return combinedQueries.find().then((shares) => {
         return shares
+    });
+}
+
+export const getSpecificShareByShareId = (shareId) => {
+    const share = Parse.Object.extend('shares');
+    let query = new Parse.Query(share);
+    query.equalTo("objectId", shareId);
+
+    return query.find().then((shares) => {
+        return shares[0]; //waiting for one Object
+    });
+}
+
+export const getCommentsByShareId = (shareId) => {
+    const comment = Parse.Object.extend('Comment');
+    let query = new Parse.Query(comment);
+    query.equalTo("shareId", shareId);
+
+    return query.find().then((comments) => {
+        return comments;
     });
 }
 

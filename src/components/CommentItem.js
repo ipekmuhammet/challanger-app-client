@@ -5,9 +5,9 @@ import styles from './PostItemStyles'
 import { randomGuySrc, profileSrc, share, comment, reShare, like } from '../../assets/images';
 import { saveMention } from '../helpers/parse';
 
-export class PostItem extends React.Component {
+export class CommentItem extends React.Component {
     onPostClick() {
-        this.props.navigation.navigate('PostPage', { details: this.props.details })
+        //this.props.navigation.navigate('PostPage', { details: this.props.details })
     }
 
     onReShareClick() {
@@ -29,15 +29,15 @@ export class PostItem extends React.Component {
     }
 
     render() {
-        let { owner, detail } = this.props.details
+        let { commentBy, comment } = this.props.details
         return (
             <TouchableOpacity style={styles.channel} onPress={this.onPostClick.bind(this)}>
 
                 <Image source={this.props.logo} style={styles.channelLogo} />
 
                 <View style={styles.channelDescription}>
-                    <Text style={styles.channelName}>{owner}</Text>
-                    <Text style={styles.message}>{detail}</Text>
+                    <Text style={styles.channelName}>{commentBy}</Text>
+                    <Text style={styles.message}>{comment}</Text>
 
                     <View style={{ flexDirection: 'row' }}>
                         <TouchableOpacity onPress={this.onReShareClick.bind(this)}>
@@ -59,4 +59,4 @@ export class PostItem extends React.Component {
     }
 }
 
-export default PostItem
+export default CommentItem

@@ -13,6 +13,7 @@ import NewPost from './components/NewPost.js'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import { PostPage } from './pages/PostPage/PostPage';
 
 console.disableYellowBox = true;//dont shows warnings
 
@@ -73,6 +74,7 @@ const navigator = createStackNavigator({
   Register: { screen: Register },
   Welcome: { screen: Welcome },
   Main: { screen: Main },
+  PostPage: { screen: PostPage },
 },
   {
     initialRouteName: 'Main',

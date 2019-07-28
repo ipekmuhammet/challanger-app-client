@@ -9,6 +9,10 @@ import profileSrc from './profile.png'
 import backgroundPhotoSrc from './backgroundPhoto.png'
 import randomGuySrc from './randomGuySrc.png'
 import postIcon from './postIcon.png'
+import share from './share.png'
+import reShare from './reShare.png'
+import comment from './comment.png'
+import like from './like.png'
 
 export {
     background,
@@ -21,5 +25,9 @@ export {
     profileSrc,
     backgroundPhotoSrc,
     randomGuySrc,
-    postIcon
+    postIcon,
+    share,
+    reShare,
+    comment,
+    like
 }

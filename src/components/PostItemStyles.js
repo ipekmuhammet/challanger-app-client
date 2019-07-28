@@ -4,19 +4,21 @@ import { StyleSheet } from 'react-native';
 export default styles = StyleSheet.create({
     channel: {
         flexDirection: 'row',
-        padding: 5,
-        margin: 5,
+        paddingLeft: 5,
+        paddingBottom: 5,
+        marginLeft: 5,
+        marginBottom: 5,
         borderColor: '#CCCCCC',
         borderBottomWidth: 1,
     },
-    shareItem:{
+    shareItem: {
         flexDirection: 'column',
         padding: 5,
         margin: 5,
         borderColor: '#CCCCCC',
         borderBottomWidth: 1,
     },
-    shareDescription:{
+    shareDescription: {
         flexDirection: 'row',
         padding: 5,
         margin: 5

@@ -20,7 +20,7 @@ export class Shares extends React.Component {
         getSpecificShares('@mamiBaba').then(shares => {
             let arr = []
             for (let share in shares) {
-                arr.push({ share: shares[share].attributes })
+                arr.push({ share: { ...shares[share].attributes, ...{ id: shares[share].id } } })
             }
             this.setState({ shares: arr })
         })
@@ -29,8 +29,8 @@ export class Shares extends React.Component {
     render() {
         return <FlatList
             data={this.state.shares}
-            renderItem={object => <PostItem name={object.item.share.owner} logo={randomGuy} message={object.item.share.detail} />}
-            keyExtractor={(item, index) => { "myShare" + index }} />
+            renderItem={object => <PostItem logo={randomGuy} details={object.item.share} />}
+            keyExtractor={item => { "myShare" + item.id }} />
     }
 }
 

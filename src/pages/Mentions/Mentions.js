@@ -21,7 +21,7 @@ export class Mentions extends React.Component {
             getSpecificSharesByOwnerIds(ownerIds).then(mentions => {
                 let arr = []
                 for (let mention in mentions) {
-                    arr.push({ mention: mentions[mention].attributes })
+                    arr.push({ mention: { ...mentions[mention].attributes, ...mentions[mention].id } })
                 }
                 this.setState({ mentions: arr })
             })
@@ -31,7 +31,7 @@ export class Mentions extends React.Component {
     render() {
         return <FlatList
             data={this.state.mentions}
-            renderItem={object => <PostItem name={object.item.mention.owner} logo={randomGuy} message={object.item.mention.detail} />}
+            renderItem={object => <PostItem logo={randomGuy} details={object.item.mention} />}
             keyExtractor={(item, index) => { "myMention" + index }} />
     }
 }
