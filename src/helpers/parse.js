@@ -135,7 +135,7 @@ export const saveShare = (owner, ownerId, detail) => {
     );
 }
 
-export const saveComment = (shareId, commentBy,commentText) => {
+export const saveComment = (shareId, commentBy, commentText) => {
     const comment = Parse.Object.extend('Comment');
     const myNewObject = new comment();
 
@@ -146,10 +146,22 @@ export const saveComment = (shareId, commentBy,commentText) => {
     return myNewObject.save().then(
         (result) => {
             console.log('comment created', result);
-            return true
+            return result
         }, (error) => {
             console.error('Error while creating comment: ', error);
             return false
         }
     );
+}
+export const deleteComment = (commentId) => {
+    const Comment = Parse.Object.extend('Comment');
+    const query = new Parse.Query(Comment);
+    // here you put the objectId that you want to delete
+    query.get(commentId).then((object) => {
+        object.destroy().then((response) => {
+            console.log('Deleted Comment', response);
+        }, (error) => {
+            console.error('Error while deleting Comment', error);
+        });
+    });
 }

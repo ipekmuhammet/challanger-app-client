@@ -13,6 +13,7 @@ import share from './share.png'
 import reShare from './reShare.png'
 import comment from './comment.png'
 import like from './like.png'
+import settingsSrc from './settings.png'
 
 export {
     background,
@@ -29,5 +30,6 @@ export {
     share,
     reShare,
     comment,
-    like
+    like,
+    settingsSrc
 }

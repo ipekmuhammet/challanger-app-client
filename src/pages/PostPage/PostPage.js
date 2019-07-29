@@ -4,7 +4,7 @@ import PostItem from '../../components/PostItem'
 import { getCommentsByShareId, initializeParse, saveComment } from '../../helpers/parse'
 import styles from './styles'
 
-import { profileSrc, randomGuySrc as randomGuy, postIcon } from '../../../assets/images'
+import { profileSrc, randomGuySrc as randomGuy, postIcon,settings } from '../../../assets/images'
 import CommentItem from '../../components/CommentItem';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -31,10 +31,10 @@ export class PostPage extends React.Component {
         })
     }
 
-    manualCommentInsertion() {
+    manualCommentInsertion(newComment) {
         let details = this.props.navigation.state.params.details
         this.setState({
-            comments: [...this.state.comments, { comment: { shareId: details.id, commentBy: '@mamiBaba', comment: this.state.text } }]
+            comments: [...this.state.comments, { comment: { ...newComment.attributes, ...{ id: newComment.id } } }]
         })
     }
 
@@ -48,7 +48,7 @@ export class PostPage extends React.Component {
                     <FlatList
                         data={this.state.comments}
                         renderItem={object => <CommentItem logo={randomGuy} details={object.item.comment} />}
-                        keyExtractor={item => { "Share:" + details.id + "Detail:" + item.id }}
+                        keyExtractor={item => "Comment:" + details.id + "Detail:" + item.comment.id}
                     />
                 </ScrollView>
 
@@ -58,8 +58,8 @@ export class PostPage extends React.Component {
                     onChangeText={text => this.setState({ text })}
                     style={{ textAlignVertical: 'top', backgroundColor: 'white', position: 'absolute', borderRadius: 8, bottom: 5, padding: 8, margin: 8, fontSize: 18, left: 5, right: 5, borderWidth: 1, borderColor: '#D1D5DA' }} />
                 <TouchableOpacity onPress={() => {
-                    saveComment(details.id, '@mamiBaba', this.state.text).then(isItDone => {
-                        isItDone ? this.manualCommentInsertion() : ToastAndroid.show("Fail", 1)
+                    saveComment(details.id, '@mamiBaba', this.state.text).then(result => {
+                        result ? this.manualCommentInsertion(result) : ToastAndroid.show("Fail", 1)
                     })
                 }}
                     style={{ position: 'absolute', right: 5, bottom: 55, borderWidth: 1, backgroundColor: 'white', borderColor: 'black', padding: 10, margin: 10 }}><Text>Share</Text></TouchableOpacity>
