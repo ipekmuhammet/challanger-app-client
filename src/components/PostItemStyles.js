@@ -33,14 +33,14 @@ export default styles = StyleSheet.create({
     channelName: {
         fontSize: 18,
         paddingHorizontal: 15,
-        color: 'rgba(69,90,100,.95)',
+        color: 'black',//color: 'rgba(69,90,100,.95)',
         margin: 5,
         padding: 5
     },
     message: {
         fontSize: 16,
         paddingHorizontal: 15,
-        color: '#EDEDED',
+        color: 'black',//color: '#EDEDED',
         margin: 5,
         padding: 5
     },

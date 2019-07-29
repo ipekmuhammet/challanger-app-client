@@ -134,3 +134,22 @@ export const saveShare = (owner, ownerId, detail) => {
         }
     );
 }
+
+export const saveComment = (shareId, commentBy,commentText) => {
+    const comment = Parse.Object.extend('Comment');
+    const myNewObject = new comment();
+
+    myNewObject.set('shareId', shareId);
+    myNewObject.set('commentBy', commentBy);
+    myNewObject.set('comment', commentText);
+
+    return myNewObject.save().then(
+        (result) => {
+            console.log('comment created', result);
+            return true
+        }, (error) => {
+            console.error('Error while creating comment: ', error);
+            return false
+        }
+    );
+}
