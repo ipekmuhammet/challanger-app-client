@@ -153,15 +153,20 @@ export const saveComment = (shareId, commentBy, commentText) => {
         }
     );
 }
+
 export const deleteComment = (commentId) => {
     const Comment = Parse.Object.extend('Comment');
     const query = new Parse.Query(Comment);
     // here you put the objectId that you want to delete
-    query.get(commentId).then((object) => {
-        object.destroy().then((response) => {
-            console.log('Deleted Comment', response);
-        }, (error) => {
-            console.error('Error while deleting Comment', error);
+    return new Promise((resolve, reject) => {
+        query.get(commentId).then((object) => {
+            object.destroy().then((response) => {
+                //console.log('Deleted Comment', response);
+                resolve(response)
+            }, (error) => {
+                reject(false)
+                //console.error('Error while deleting Comment', error);
+            });
         });
-    });
+    })
 }

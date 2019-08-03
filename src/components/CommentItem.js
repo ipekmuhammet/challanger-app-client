@@ -1,30 +1,26 @@
 import React from 'react'
-import { TouchableOpacity, Image, View, Text, ToastAndroid, Drop } from 'react-native'
+import { TouchableOpacity, Image, View, Text, ToastAndroid, Drop, Modal, TouchableHighlight, Alert } from 'react-native'
 import PropTypes from 'prop-types'
 import styles from './PostItemStyles'
 import { randomGuySrc, profileSrc, share, comment as commentSrc, reShare, like, settingsSrc } from '../../assets/images';
 import { saveMention, deleteComment } from '../helpers/parse';
-import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
+import ActionSheet from 'react-native-actionsheet';
+import CommentActions from '../models/CommentActions'
 
 export class CommentItem extends React.Component {
 
-    _menu = null;
+    state = {
+        modalVisible: true
+    }
 
-    setMenuRef = ref => {
-        this._menu = ref;
-    };
-
-    hideMenu() {
-        this._menu.hide();
-    };
-
-    showMenu = () => {
-        this._menu.show();
+    showActionSheet = () => {
+        this.ActionSheet.show();
     };
 
     onDeleteClick() {
-        deleteComment(this.props.details.id)
-        this.hideMenu();
+        deleteComment(this.props.details.id).then(comment => {
+            this.props.extractComment(comment)
+        })
     }
 
     onReShareClick() {
@@ -45,25 +41,28 @@ export class CommentItem extends React.Component {
 
     }
 
-    componentWillUnmount() {
-        this.hideMenu()
+    onActionClick(index) {
+        switch (index) {
+            case CommentActions.Delete:
+                this.onDeleteClick(); break;
+            default: break;
+        }
     }
 
     render() {
+        let optionArray = [
+            'Delete',
+            'Cancel',
+        ];
+
         let { commentBy, comment } = this.props.details
         return (
             <View style={styles.channel}>
                 <Image source={this.props.logo} style={styles.channelLogo} />
 
                 <TouchableOpacity
-                    onPress={this.showMenu} style={{ position: 'absolute', top: 6, right: 6, zIndex: 5, borderWidth: 1, zIndex: 3 }}>
-                    <Menu
-                        ref={this.setMenuRef}
-                        button={<Image resizeMode="contain" style={{ width: 24, height: 32 }} source={settingsSrc} />}>
-                        <MenuItem onPress={() => this.onDeleteClick()}>Delete</MenuItem>
-                        <MenuDivider />
-                        <MenuItem onPress={() => this.hideMenu()}>Cancel</MenuItem>
-                    </Menu>
+                    onPress={this.showActionSheet} style={{ position: 'absolute', top: 6, right: 6, zIndex: 5, borderWidth: 1, zIndex: 3 }}>
+                    <Image resizeMode="contain" style={{ width: 24, height: 32 }} source={settingsSrc} />
                 </TouchableOpacity>
 
                 <View style={styles.channelDescription}>
@@ -85,6 +84,14 @@ export class CommentItem extends React.Component {
                         </TouchableOpacity>
                     </View>
                 </View>
+
+                <ActionSheet
+                    ref={o => (this.ActionSheet = o)}
+                    options={optionArray}
+                    cancelButtonIndex={1}
+                    destructiveButtonIndex={1}
+                    onPress={this.onActionClick.bind(this)}
+                />
             </View>
         )
     }

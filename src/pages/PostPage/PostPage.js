@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, FlatList, ToastAndroid, TextInput, TouchableOpacity, Text } from 'react-native';
 import PostItem from '../../components/PostItem'
-import { getCommentsByShareId, initializeParse, saveComment } from '../../helpers/parse'
+import { getCommentsByShareId, initializeParse, saveComment, deleteComment } from '../../helpers/parse'
 import styles from './styles'
 
-import { profileSrc, randomGuySrc as randomGuy, postIcon,settings } from '../../../assets/images'
+import { profileSrc, randomGuySrc as randomGuy, postIcon, settings } from '../../../assets/images'
 import CommentItem from '../../components/CommentItem';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -32,9 +32,21 @@ export class PostPage extends React.Component {
     }
 
     manualCommentInsertion(newComment) {
-        let details = this.props.navigation.state.params.details
+        //let details = this.props.navigation.state.params.details
         this.setState({
             comments: [...this.state.comments, { comment: { ...newComment.attributes, ...{ id: newComment.id } } }]
+        })
+    }
+
+    manualCommentExtraction = (deletedComment) => {
+        this.state.comments.map(({ comment }, index) => {
+            if (comment.id === deletedComment.id) {
+                let refreshedComments = this.state.comments
+                refreshedComments.splice(index, 1)
+                this.setState({
+                    comments: refreshedComments
+                })
+            }
         })
     }
 
@@ -47,7 +59,8 @@ export class PostPage extends React.Component {
                     <View style={{ width: '100%', height: 30, borderBottomWidth: 1, borderTopWidth: 1 }} />
                     <FlatList
                         data={this.state.comments}
-                        renderItem={object => <CommentItem logo={randomGuy} details={object.item.comment} />}
+                        renderItem={object =>
+                            <CommentItem logo={randomGuy} details={object.item.comment} extractComment={this.manualCommentExtraction} />}
                         keyExtractor={item => "Comment:" + details.id + "Detail:" + item.comment.id}
                     />
                 </ScrollView>
@@ -62,7 +75,9 @@ export class PostPage extends React.Component {
                         result ? this.manualCommentInsertion(result) : ToastAndroid.show("Fail", 1)
                     })
                 }}
-                    style={{ position: 'absolute', right: 5, bottom: 55, borderWidth: 1, backgroundColor: 'white', borderColor: 'black', padding: 10, margin: 10 }}><Text>Share</Text></TouchableOpacity>
+                    style={{ position: 'absolute', right: 5, bottom: 55, borderWidth: 1, backgroundColor: 'white', borderColor: 'black', padding: 10, margin: 10 }}>
+                    <Text>Share</Text>
+                </TouchableOpacity>
 
             </View>
         )
