@@ -1,5 +1,6 @@
 enum CommentActions {
     CopyLink,
+    ShowLess,
     StopFollowing,
     Mute,
     Block,

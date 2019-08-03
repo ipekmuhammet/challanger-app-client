@@ -1,19 +1,22 @@
 import React from 'react'
 import { TouchableOpacity, Image, View, Text, ToastAndroid, Drop, Modal, TouchableHighlight, Alert } from 'react-native'
 import PropTypes from 'prop-types'
-import styles from './PostItemStyles'
-import { randomGuySrc, profileSrc, share, comment as commentSrc, reShare, like, settingsSrc } from '../../assets/images';
-import { saveMention, deleteComment } from '../helpers/parse';
 import ActionSheet from 'react-native-actionsheet';
+
+import { randomGuySrc, profileSrc, share, comment as commentSrc, reShare, like, settingsSrc } from '../../assets/images';
+import styles from './PostItemStyles'
+import { saveMention, deleteComment } from '../helpers/parse';
+import MyCommentActions from '../models/MyCommentActions'
 import CommentActions from '../models/CommentActions'
 
 export class CommentItem extends React.Component {
 
     state = {
-        modalVisible: true
+        modalVisible: true,
+        commentByMe: true
     }
 
-    showActionSheet = () => {
+    showActionSheet = () => {   
         this.ActionSheet.show();
     };
 
@@ -42,20 +45,42 @@ export class CommentItem extends React.Component {
     }
 
     onActionClick(index) {
-        switch (index) {
-            case CommentActions.Delete:
-                this.onDeleteClick(); break;
-            default: break;
+        if (this.state.commentByMe) {
+            switch (index) {
+                case MyCommentActions.Delete:
+                    this.onDeleteClick(); break;
+                default: break;
+            }
+        }
+        else {
+            switch (index) {
+                default: break;
+            }
         }
     }
 
+    UNSAFE_componentWillMount() {
+        let { commentBy } = this.props.details
+        commentBy === '@mamiBaba' ? this.setState({ commentByMe: true }) : this.setState({ commentByMe: false })
+    }
+
     render() {
-        let optionArray = [
-            'Delete',
-            'Cancel',
-        ];
+        let optionArray = this.state.commentByMe ?
+            [
+                'Delete',
+                'Cancel',
+            ] :
+            [
+                'Bağlantıyı kopyala',
+                'Takip Et / Takipi Bırak',
+                'Sessize Al',
+                'Engelle',
+                'Gönderiyi Bildir',
+                'Cancel'
+            ]
 
         let { commentBy, comment } = this.props.details
+        let { commentByMe } = this.state
         return (
             <View style={styles.channel}>
                 <Image source={this.props.logo} style={styles.channelLogo} />
@@ -88,8 +113,8 @@ export class CommentItem extends React.Component {
                 <ActionSheet
                     ref={o => (this.ActionSheet = o)}
                     options={optionArray}
-                    cancelButtonIndex={1}
-                    destructiveButtonIndex={1}
+                    cancelButtonIndex={commentByMe ? 1 : 5}
+                    destructiveButtonIndex={commentByMe ? 1 : 5}
                     onPress={this.onActionClick.bind(this)}
                 />
             </View>
