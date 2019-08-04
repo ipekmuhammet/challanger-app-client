@@ -15,6 +15,8 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import { PostPage } from './pages/PostPage/PostPage';
 
+import { API_KEY, ANOTHER_CONFIG } from 'react-native-dotenv'
+
 console.disableYellowBox = true;//dont shows warnings
 
 let CollapseExpand = (index, position) => {
